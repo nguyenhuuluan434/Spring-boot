@@ -1,2 +1,4 @@
 com/vng/ird/Example.class
+com/vng/ird/configuration/AppConfiguration.class
+com/vng/ird/controller/AppController.class
 com/vng/ird/classloader/ClassLoaderExtend.class
