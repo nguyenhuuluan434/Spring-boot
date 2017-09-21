@@ -2,26 +2,33 @@ package com.vng.ird.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.PropertySources;
 
-/*@Configuration
-@EnableAutoConfiguration*/
-@PropertySource(value= "config/app.properties", ignoreResourceNotFound=true)
-@Service
+@Configuration
+@EnableAutoConfiguration
+@PropertySources({ @PropertySource(value = "file:./config/app.properties"),
+		@PropertySource(value = "file:./config/databases.properties") })
+@ComponentScan(basePackages = { "com.vng.ird" })
 public class AppConfiguration {
 
-/*	@Bean
-	public PropertyPlaceholderConfigurer propertyConfigurer() throws Exception {
-		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-		URL url = new File("config/app.properties").toURI().toURL();
-		UrlResource resource = new UrlResource(url);
-		ppc.setLocations(resource);
-		return ppc;
-	}*/
+	/*
+	 * // properties file
+	 * 
+	 * @Bean public PropertyPlaceholderConfigurer propertyConfigurer() throws
+	 * Exception { PropertyPlaceholderConfigurer ppc = new
+	 * PropertyPlaceholderConfigurer(); URL url = new
+	 * File("config/app.properties").toURI().toURL();
+	 * System.out.println(url.getPath()); UrlResource resource = new
+	 * UrlResource(url); ppc.setLocations(resource); return ppc; }
+	 */
 
-	@Value("{name:missing name}")
-	private String name;
+	@Value("${app.name}")
+	public String name;
+
+	@Value("${app.hello.message}")
+	public String helloMessage;
 
 }
