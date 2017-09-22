@@ -7,3 +7,8 @@ foo:
         roles:
           - USER
           - ADMIN
+
+app:
+    name: Spring boot yaml
+    hello:
+        message: ${app.name} message

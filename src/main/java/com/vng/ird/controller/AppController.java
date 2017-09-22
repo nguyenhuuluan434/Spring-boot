@@ -17,4 +17,10 @@ public class AppController {
 	String home() {
 		return "Hello " + appConfig.name;
 	}
+	
+	@RequestMapping("/hello")
+	@ResponseBody
+	String Hello() {
+		return appConfig.helloMessage;
+	}
 }
