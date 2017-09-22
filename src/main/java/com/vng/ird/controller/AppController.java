@@ -23,4 +23,10 @@ public class AppController {
 	String Hello() {
 		return appConfig.helloMessage;
 	}
+	
+	@RequestMapping("/roles")
+	@ResponseBody
+	String Roles() {
+		return appConfig.roles;
+	}
 }

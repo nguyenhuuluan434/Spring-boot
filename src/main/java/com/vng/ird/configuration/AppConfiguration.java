@@ -17,5 +17,8 @@ public class AppConfiguration {
 
 	@Value("${app.hello.message}")
 	public String helloMessage;
+	
+	@Value("${foo.security.roles}")
+	public String roles;
 
 }

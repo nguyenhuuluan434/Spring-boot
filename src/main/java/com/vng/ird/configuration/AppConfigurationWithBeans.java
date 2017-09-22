@@ -20,17 +20,19 @@ public class AppConfigurationWithBeans {
 		PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
 		MutablePropertySources propertySources = new MutablePropertySources();
 
-		// Load yaml resource
+		// "Load yaml resource"
 		Resource resourceYaml = new DefaultResourceLoader().getResource("file:config/app.yml");
 		YamlPropertySourceLoader sourceYamlLoader = new YamlPropertySourceLoader();
 		PropertySource<?> yamlProperties = sourceYamlLoader.load("resourceYaml", resourceYaml, null);
-		// Load properties resource
+
+		// "Load properties resource"
 		Resource resourceProperties = new DefaultResourceLoader().getResource("file:config/app.properties");
 		PropertySourcesLoader sourcePropertiesLoader = new PropertySourcesLoader();
 		PropertySource<?> propertyProperties = sourcePropertiesLoader.load(resourceProperties, "resourceProperties",
 				null);
 
-		// Add to PropertySourcesPlaceholderConfigurer
+		// Add to PropertySourcesPlaceholderConfigurer"
+
 		propertySources.addFirst(yamlProperties);
 		// propertySources.addBefore("resourceYaml", propertyProperties);
 		propertySources.addAfter("resourceYaml", propertyProperties);
