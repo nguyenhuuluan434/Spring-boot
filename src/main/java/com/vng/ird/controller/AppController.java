@@ -27,6 +27,6 @@ public class AppController {
 	@RequestMapping("/roles")
 	@ResponseBody
 	String Roles() {
-		return appConfig.roles;
+		return appConfig.roles.toString();
 	}
 }

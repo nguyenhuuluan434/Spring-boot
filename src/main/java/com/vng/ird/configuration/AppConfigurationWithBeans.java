@@ -31,11 +31,15 @@ public class AppConfigurationWithBeans {
 		PropertySource<?> propertyProperties = sourcePropertiesLoader.load(resourceProperties, "resourceProperties",
 				null);
 
+		Resource resourceDatabaseProperties = new DefaultResourceLoader().getResource("file:config/databases.properties");
+		PropertySourcesLoader sourceDatabasePropertiesLoader = new PropertySourcesLoader();
+		PropertySource<?> propertyDatabaseProperties = sourceDatabasePropertiesLoader.load(resourceDatabaseProperties, "resourceDatabaseProperties",
+				null);
+		
 		// Add to PropertySourcesPlaceholderConfigurer"
-
 		propertySources.addFirst(yamlProperties);
-		// propertySources.addBefore("resourceYaml", propertyProperties);
 		propertySources.addAfter("resourceYaml", propertyProperties);
+		propertySources.addLast(propertyDatabaseProperties);
 
 		configurer.setPropertySources(propertySources);
 		return configurer;
